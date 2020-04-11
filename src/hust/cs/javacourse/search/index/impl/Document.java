@@ -127,10 +127,6 @@ public class Document extends AbstractDocument {
      */
     @Override
     public String toString() {
-        String str = "docId: " + this.docId + "docPath: " + this.docPath + '\n';
-        for(int i=0; i<this.tuples.size(); i++){
-            str = str + this.tuples.get(i) + '\n';
-        }
-        return str;
+        return "{docId: " + this.docId + "docPath: " + this.docPath + "tuples: " + this.tuples.toString() + "}";
     }
 }

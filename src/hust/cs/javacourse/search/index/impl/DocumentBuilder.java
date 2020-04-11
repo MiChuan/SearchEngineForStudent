@@ -2,9 +2,14 @@ package hust.cs.javacourse.search.index.impl;
 
 import hust.cs.javacourse.search.index.AbstractDocument;
 import hust.cs.javacourse.search.index.AbstractDocumentBuilder;
+import hust.cs.javacourse.search.index.AbstractTermTuple;
 import hust.cs.javacourse.search.parse.AbstractTermTupleStream;
+import hust.cs.javacourse.search.parse.impl.LengthTermTupleFilter;
+import hust.cs.javacourse.search.parse.impl.PatternTermTupleFilter;
+import hust.cs.javacourse.search.parse.impl.SimpleScanner;
+import hust.cs.javacourse.search.parse.impl.StopWordTermTupleFilter;
 
-import java.io.File;
+import java.io.*;
 
 public class DocumentBuilder extends AbstractDocumentBuilder {
     /**
@@ -18,7 +23,13 @@ public class DocumentBuilder extends AbstractDocumentBuilder {
      */
     @Override
     public AbstractDocument build(int docId, String docPath, AbstractTermTupleStream termTupleStream) {
-        return null;
+        AbstractDocument document = new Document(docId,docPath);
+        AbstractTermTuple termTuple = termTupleStream.next();
+        while (termTuple!=null){
+            document.addTuple(termTuple);
+            termTuple = termTupleStream.next();
+        }
+        return document;
     }
 
     /**
@@ -34,6 +45,14 @@ public class DocumentBuilder extends AbstractDocumentBuilder {
      */
     @Override
     public AbstractDocument build(int docId, String docPath, File file) {
-        return null;
+        AbstractTermTupleStream termTupleStream = null;
+        try{
+            termTupleStream =
+                    new LengthTermTupleFilter(new PatternTermTupleFilter(new StopWordTermTupleFilter(
+                    new SimpleScanner(new BufferedReader(new InputStreamReader(new FileInputStream(file)))))));
+        } catch (FileNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return this.build(docId,docPath,termTupleStream);
     }
 }

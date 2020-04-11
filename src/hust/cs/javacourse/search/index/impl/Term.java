@@ -69,26 +69,7 @@ public class Term extends AbstractTerm {
      */
     @Override
     public int compareTo(AbstractTerm o) {
-        int len1 = this.content.length();
-        int len2 = ((Term)o).content.length();
-        //取数组长度里面最小的
-        int lim = Math.min(len1,len2);
-        // 获得两个数组，这两个数组就是string的属性
-
-        int k = 0;
-        while (k < lim) {
-            //获取第K的字符，进行比较
-            char c1 = this.content.charAt(k);
-            char c2 = ((Term)o).content.charAt(k);
-            if (c1 != c2) {
-                //Java使用的是Unicode编码，因此返回这两个字符的Unicode差值。
-                return c1 - c2;
-            }
-            k++;
-        }
-
-        //如果前lim个字符都相同，那么就返回长度差。
-        return len1 - len2;
+        return this.content.compareTo(o.getContent());
     }
 
     /**
@@ -96,11 +77,11 @@ public class Term extends AbstractTerm {
      * @param out :输出流对象
      */
     @Override
-    public void writeObject(ObjectOutputStream out) throws IOException {
-        try{
-            out.writeBytes(this.content);
-        } catch (IOException ex){
-            throw ex;
+    public void writeObject(ObjectOutputStream out){
+        try {
+            out.writeUTF(this.content);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -109,12 +90,11 @@ public class Term extends AbstractTerm {
      * @param in ：输入流对象
      */
     @Override
-    public void readObject(ObjectInputStream in) throws IOException {
-        try{
+    public void readObject(ObjectInputStream in){
+        try {
             this.content = in.readUTF();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-         catch (IOException ex){
-            throw ex;
-         }
     }
 }

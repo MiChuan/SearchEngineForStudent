@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,11 +32,7 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public String toString() {
-        String str="";
-        for(int i=0; i<this.list.size(); i++){
-            str = str + this.list.get(i).toString() + '\n';
-        }
-        return str;
+        return this.list.toString();
     }
 
     /**
@@ -158,7 +155,12 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void sort() {
-        Collections.sort(this.list);
+        this.list.sort(new Comparator<AbstractPosting>() {
+            @Override
+            public int compare(AbstractPosting t1, AbstractPosting t2) {
+                return t1.getDocId() - t2.getDocId();
+            }
+        });
     }
 
     /**
@@ -167,9 +169,11 @@ public class PostingList extends AbstractPostingList {
      * @param out :输出流对象
      */
     @Override
-    public void writeObject(ObjectOutputStream out) throws IOException {
-        for(int i=0; i<this.list.size(); i++){
-            this.list.get(i).writeObject(out);
+    public void writeObject(ObjectOutputStream out){
+        try {
+            out.writeObject(this.list);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -179,9 +183,13 @@ public class PostingList extends AbstractPostingList {
      * @param in ：输入流对象
      */
     @Override
-    public void readObject(ObjectInputStream in) throws IOException {
-        for(int i=0; i<this.list.size(); i++){
-            this.list.get(i).readObject(in);
+    public void readObject(ObjectInputStream in){
+        try {
+            this.list = (List<AbstractPosting>)in.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }

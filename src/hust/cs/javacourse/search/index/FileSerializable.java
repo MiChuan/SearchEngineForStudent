@@ -10,11 +10,11 @@ public interface FileSerializable extends java.io.Serializable{
      * 写到二进制文件
      * @param out :输出流对象
      */
-    public abstract void writeObject(ObjectOutputStream out) throws IOException;
+    public abstract void writeObject(ObjectOutputStream out);
 
     /**
      * 从二进制文件读
      * @param in ：输入流对象
      */
-    public  abstract void readObject(ObjectInputStream in) throws IOException;
+    public  abstract void readObject(ObjectInputStream in);
 }

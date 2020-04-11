@@ -51,6 +51,6 @@ public class TermTuple extends AbstractTermTuple {
      */
     @Override
     public String toString() {
-        return "term: " + this.term + "freq: " + this.freq + "curPos: " + this.curPos;
+        return "(" + this.term.toString() + "freq: " + this.freq + "curPos: " + this.curPos + ")";
     }
 }

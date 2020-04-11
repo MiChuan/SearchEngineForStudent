@@ -6,7 +6,9 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Posting extends AbstractPosting {
@@ -48,11 +50,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public String toString() {
-        String str = "docId: " + this.docId + "freq: " + this.freq + "positions: ";
-        for(int i=0; i<this.positions.size(); i++){
-            str = str + " " + this.positions.get(i);
-        }
-        return str;
+        return "{docId: " + this.docId + "freq: " + this.freq + "positions: " + this.positions + "}";
     }
 
     /**
@@ -116,7 +114,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public int compareTo(AbstractPosting o) {
-        return this.docId - ((Posting)o).docId;
+        return this.docId - ((Posting)o).getDocId();
     }
 
     /**
@@ -124,7 +122,12 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public void sort() {
-        Collections.sort(this.positions);
+        this.positions.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer integer, Integer t1) {
+                return integer.intValue() - t1.intValue();
+            }
+        });
     }
 
     /**
@@ -132,11 +135,13 @@ public class Posting extends AbstractPosting {
      * @param out :输出流对象
      */
     @Override
-    public void writeObject(ObjectOutputStream out) throws IOException {
-        out.write(this.docId);
-        out.write(this.freq);
-        for(int i = 0; i<this.positions.size(); i++){
-            out.write(this.positions.get(i));
+    public void writeObject(ObjectOutputStream out){
+        try{
+            out.writeInt(this.docId);
+            out.writeInt(this.freq);
+            out.writeObject(this.positions);
+        } catch (IOException ex){
+            ex.printStackTrace();
         }
     }
 
@@ -145,15 +150,13 @@ public class Posting extends AbstractPosting {
      * @param in ：输入流对象
      */
     @Override
-    public void readObject(ObjectInputStream in) throws IOException {
-        this.docId = in.readInt();
-        this.freq = in.readInt();
-        while (true) {
-            try {
-                this.positions.add(in.readInt());
-            } catch (EOFException e) {
-                break;
-            }
+    public void readObject(ObjectInputStream in){
+        try {
+            this.docId = in.readInt();
+            this.freq = in.readInt();
+            this.positions = (ArrayList<Integer>)in.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
     }
 }
