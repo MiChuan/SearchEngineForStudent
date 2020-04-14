@@ -155,12 +155,7 @@ public class PostingList extends AbstractPostingList {
      */
     @Override
     public void sort() {
-        this.list.sort(new Comparator<AbstractPosting>() {
-            @Override
-            public int compare(AbstractPosting t1, AbstractPosting t2) {
-                return t1.getDocId() - t2.getDocId();
-            }
-        });
+        Collections.sort(this.list);
     }
 
     /**

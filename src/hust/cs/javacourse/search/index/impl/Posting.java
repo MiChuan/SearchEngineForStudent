@@ -50,7 +50,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public String toString() {
-        return "{docId: " + this.docId + "freq: " + this.freq + "positions: " + this.positions + "}";
+        return "(docId: " + this.docId + ", freq: " + this.freq + ", positions: " + this.positions + ")";
     }
 
     /**
@@ -122,12 +122,7 @@ public class Posting extends AbstractPosting {
      */
     @Override
     public void sort() {
-        this.positions.sort(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer integer, Integer t1) {
-                return integer.intValue() - t1.intValue();
-            }
-        });
+        Collections.sort(this.positions);
     }
 
     /**
