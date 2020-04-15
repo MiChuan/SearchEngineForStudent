@@ -20,6 +20,10 @@ public class TestBuildIndex {
      * @param args : 命令行参数
      */
     public static void main(String[] args) {
+        System.out.println("创建倒排索引，创建模式：");
+        System.out.println("1. 从文本文档目录读取文档内容进行创建");
+        System.out.println("2. 从已有的序列化索引文件反序列化进行创建");
+        System.out.print("请输入数字：");
         Scanner scan = new Scanner(System.in);
         int opt = scan.nextInt();
         AbstractIndex index;
@@ -30,13 +34,19 @@ public class TestBuildIndex {
                 if (index.getDictionary().isEmpty()){
                     System.out.println("Warning: 索引表为空！");
                 }
-                System.out.println(index.toString());
+                System.out.println("文档目录：");
                 System.out.println(Config.DOC_DIR);
+                System.out.println("倒排索引内容：");
+                System.out.println(index.toString());
                 break;
-            case 0:
+            case 2:
                 index = new Index();
                 index.load(new File(Config.INDEX_DIR + "index.dat"));
+                System.out.println("倒排索引内容：");
                 System.out.println(index.toString());
+                break;
+            default:
+                System.out.println("输入格式错误!");
                 break;
         }
     }

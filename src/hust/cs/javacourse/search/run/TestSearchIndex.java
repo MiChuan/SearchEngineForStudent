@@ -32,9 +32,15 @@ public class TestSearchIndex {
         FreqSorter freqSorter = new FreqSorter();
         // 查询一个单词
         String req;
-        System.out.print("请输入查询单词: ");
+        System.out.println("倒排索引查询，输入格式：");
+        System.out.println("1. oneWord");
+        System.out.println("2. word combine word");
+        System.out.println("combine :   or: +,|  and: &,*");
+        System.out.println("3. firstWord secondWord");
+        System.out.println("4. 输入quitSearch退出查询");
+        System.out.print("请输入需要查询的单词: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        while((req = br.readLine()) != null && !req.equals("q")){
+        while((req = br.readLine()) != null && !req.equals("quitSearch")){
             String[] reqs = req.split("[\\s]+");   // 用空白符切分输入的这行
             List<String> stopWords = new ArrayList<String>(Arrays.asList(StopWords.STOP_WORDS));
             for(String s : reqs){
@@ -49,7 +55,15 @@ public class TestSearchIndex {
                 if(hits == null) System.out.println("未搜索到任何结果");
                 else for(AbstractHit h: hits)
                     System.out.println(h.toString());
-                System.out.print("请输入查询单词: ");
+                System.out.print("请输入需要查询的单词: ");
+
+            } else if(reqs.length == 2){        // 查询两个在文中相邻的单词
+
+                AbstractHit[] hits = searcher.search(new Term(reqs[0]), new Term(reqs[1]), freqSorter);
+                if(hits == null) System.out.println("未搜索到任何结果");
+                else for(AbstractHit h: hits)
+                    System.out.println(h.toString());
+                System.out.print("请输入需要查询的单词: ");
 
             } else if(reqs.length == 3){        // 查询两个单词，中间用&表示“与”，|表示或
 
@@ -72,11 +86,11 @@ public class TestSearchIndex {
                     System.out.println("输入格式： word combine word");
                     System.out.println("combine :   or: +,|  and: &,*");
                 }
-                System.out.print("请输入查询单词: ");
+                System.out.print("请输入需要查询的单词: ");
 
             } else {
-                System.out.println("查询的单词数过多");
-                System.out.print("请输入查询单词: ");
+                System.out.println("输入单词数过多");
+                System.out.print("请输入需要查询的单词: ");
             }
         }
     }
