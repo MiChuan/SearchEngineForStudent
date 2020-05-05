@@ -35,7 +35,7 @@ public class TestSearchIndex {
         System.out.println("倒排索引查询，输入格式：");
         System.out.println("1. oneWord");
         System.out.println("2. word combine word");
-        System.out.println("combine :   or: +,|  and: &,*");
+        System.out.println("combine :\n\tor: +,|\n\tand: &,*");
         System.out.println("3. firstWord secondWord");
         System.out.println("4. 输入quitSearch退出查询");
         System.out.print("请输入需要查询的单词: ");

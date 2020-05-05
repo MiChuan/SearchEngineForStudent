@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4213cc7e-886d-4d43-8cf7-3b6d0767e64d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hust/cs/javacourse/search/query/impl/IndexSearcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/cs/javacourse/search/query/impl/IndexSearcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hust/cs/javacourse/search/run/TestBuildIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/cs/javacourse/search/run/TestBuildIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/index.dat" beforeDir="false" afterPath="$PROJECT_DIR$/index/index.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hust/cs/javacourse/search/index/impl/DocumentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/cs/javacourse/search/index/impl/DocumentBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hust/cs/javacourse/search/index/impl/Term.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/cs/javacourse/search/index/impl/Term.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hust/cs/javacourse/search/run/TestSearchIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hust/cs/javacourse/search/run/TestSearchIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/text/1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/text/2.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +117,7 @@
       <workItem from="1586840990322" duration="26000" />
       <workItem from="1586849640834" duration="13974000" />
       <workItem from="1586911371995" duration="1921000" />
+      <workItem from="1588685711119" duration="8216000" />
     </task>
     <servers />
   </component>
@@ -130,25 +134,25 @@
       <screen x="0" y="0" width="1464" height="864" />
     </state>
     <state x="892" y="309" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1464.864@0.0.1464.864" timestamp="1586261145724" />
-    <state width="1421" height="224" key="GridCell.Tab.0.bottom" timestamp="1586913295907">
+    <state width="1421" height="277" key="GridCell.Tab.0.bottom" timestamp="1588694908787">
       <screen x="0" y="0" width="1464" height="864" />
     </state>
     <state width="1421" height="224" key="GridCell.Tab.0.bottom/0.0.1464.864/1920.0.1600.1160@0.0.1464.864" timestamp="1586877618455" />
-    <state width="1421" height="224" key="GridCell.Tab.0.bottom/0.0.1464.864@0.0.1464.864" timestamp="1586913295907" />
-    <state width="1421" height="224" key="GridCell.Tab.0.center" timestamp="1586913295906">
+    <state width="1421" height="277" key="GridCell.Tab.0.bottom/0.0.1464.864@0.0.1464.864" timestamp="1588694908787" />
+    <state width="1421" height="277" key="GridCell.Tab.0.center" timestamp="1588694908787">
       <screen x="0" y="0" width="1464" height="864" />
     </state>
     <state width="1421" height="224" key="GridCell.Tab.0.center/0.0.1464.864/1920.0.1600.1160@0.0.1464.864" timestamp="1586877618454" />
-    <state width="1421" height="224" key="GridCell.Tab.0.center/0.0.1464.864@0.0.1464.864" timestamp="1586913295906" />
-    <state width="1421" height="224" key="GridCell.Tab.0.left" timestamp="1586913295906">
+    <state width="1421" height="277" key="GridCell.Tab.0.center/0.0.1464.864@0.0.1464.864" timestamp="1588694908787" />
+    <state width="1421" height="277" key="GridCell.Tab.0.left" timestamp="1588694908787">
       <screen x="0" y="0" width="1464" height="864" />
     </state>
     <state width="1421" height="224" key="GridCell.Tab.0.left/0.0.1464.864/1920.0.1600.1160@0.0.1464.864" timestamp="1586877618454" />
-    <state width="1421" height="224" key="GridCell.Tab.0.left/0.0.1464.864@0.0.1464.864" timestamp="1586913295906" />
-    <state width="1421" height="224" key="GridCell.Tab.0.right" timestamp="1586913295906">
+    <state width="1421" height="277" key="GridCell.Tab.0.left/0.0.1464.864@0.0.1464.864" timestamp="1588694908787" />
+    <state width="1421" height="277" key="GridCell.Tab.0.right" timestamp="1588694908787">
       <screen x="0" y="0" width="1464" height="864" />
     </state>
     <state width="1421" height="224" key="GridCell.Tab.0.right/0.0.1464.864/1920.0.1600.1160@0.0.1464.864" timestamp="1586877618454" />
-    <state width="1421" height="224" key="GridCell.Tab.0.right/0.0.1464.864@0.0.1464.864" timestamp="1586913295906" />
+    <state width="1421" height="277" key="GridCell.Tab.0.right/0.0.1464.864@0.0.1464.864" timestamp="1588694908787" />
   </component>
 </project>
