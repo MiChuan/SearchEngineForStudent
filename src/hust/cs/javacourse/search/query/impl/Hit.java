@@ -119,7 +119,7 @@ public class Hit extends AbstractHit {
         for(AbstractPosting p : this.termPostingMapping.values()){
             times += p.getPositions().size();
         }
-        buf.append("\ttimes = ").append(times).append(",\n");
+//        buf.append("\ttimes = ").append(times).append(",\n");
         buf.append("\tcontent =").append('\n');
 //        buf.append(this.content).append("\n}");
         String content_o = content;

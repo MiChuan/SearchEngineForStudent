@@ -45,6 +45,9 @@ public class SimpleScanner extends AbstractTermTupleScanner {
         try{
             if(stringBuff.isEmpty()){
                 String str = this.input.readLine();//读取一行字符
+                while(str != null && str.equals("")){//略过空行,比较字符串是否相同要用equals
+                    str = input.readLine();
+                }
                 if(str == null){//读到输入流结束
                     return null;
                 }

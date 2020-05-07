@@ -46,7 +46,7 @@ public class DocumentBuilder extends AbstractDocumentBuilder {
         try{
             termTupleStream =
                     new LengthTermTupleFilter(new PatternTermTupleFilter(new StopWordTermTupleFilter(
-                    new TermTupleScanner(new BufferedReader(new InputStreamReader(new FileInputStream(file)))))));
+                    new SimpleScanner(new BufferedReader(new InputStreamReader(new FileInputStream(file)))))));
         } catch (FileNotFoundException ex){
             ex.printStackTrace();
         }
